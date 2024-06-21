@@ -1,0 +1,129 @@
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to right, #FFF6B7, #F6416C);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.container {
+    background: white;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    max-width: 400px;
+    width: 100%;
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Added box-shadow transition */
+}
+
+.container:hover {
+    transform: scale(1.02);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.2); /* Enhanced shadow on hover */
+}
+
+h2 {
+    margin: 0 10px 20px;
+    color: #0d0707;
+    text-align: center;
+    position: relative; /* Relative positioning for pseudo element */
+}
+
+h2::after {
+    content: '';
+    position: absolute;
+    bottom: -10px; /* Positioning the pseudo element */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 50px;
+    height: 2px;
+    background-color: #28C76F; /* Green underline */
+}
+
+.form-group {
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.form-group input, .form-group textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    margin-bottom: 10px;
+    border-radius: 6px;
+    transition: border-color 0.3s ease;
+    box-sizing: border-box;
+    background-color: #f9f9f9; /* Light gray background */
+}
+
+.form-group input:focus, .form-group textarea:focus {
+    border-color: #007BFF;
+    outline: none;
+}
+
+.form-group label {
+    position: absolute;
+    left: 12px;
+    top: 12px;
+    color: #999;
+    transition: all 0.3s ease;
+    pointer-events: none;
+}
+
+.form-group input:focus + label, .form-group input:not(:placeholder-shown) + label,
+.form-group textarea:focus + label, .form-group textarea:not(:placeholder-shown) + label {
+    top: -20px;
+    left: 10px;
+    font-size: 15px;
+    color: #ff0000;
+    font-weight: bold;
+}
+
+.submit-btn {
+    width: 100%;
+    padding: 12px;
+    background: linear-gradient(to right, #ff9f00, #ffcd00);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    position: relative;
+    overflow: hidden; /* Hidden overflow for ripple effect */
+}
+
+.submit-btn:hover {
+    background: linear-gradient(to right, #ffcd00, #ff9f00);
+    transform: translateY(-3px);
+}
+
+.submit-btn:active {
+    transform: translateY(1px);
+}
+
+.submit-btn::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 300%;
+    height: 300%;
+    background-color: rgba(255, 255, 255, 0.2); 
+    border-radius: 50%;
+    transition: all 0.6s ease;
+    pointer-events: none;
+    z-index: 0; 
+}
+
+.submit-btn:hover::before {
+    width: 0;
+    height: 0;
+    opacity: 0;
+}
+
+.submit-btn span {
+    position: relative;
+    z-index: 1; /* Above pseudo element */
+}
